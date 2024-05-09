@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image_1:
-  repository_1: "aksres1.azurecr.io/webfrontend"
+  repository_1: aksres1.azurecr.io/webfrontend
   pullPolicy_1: IfNotPresent
   tag_1: ""
 
