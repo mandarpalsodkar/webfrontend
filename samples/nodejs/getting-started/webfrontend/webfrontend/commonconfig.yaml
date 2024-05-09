@@ -1,0 +1,67 @@
+replicaCount: 1
+
+common:
+  repository_1: mpkubeacrt.azurecr.io/webfrontend
+  pullPolicy_1: Never
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create_1: true
+  automount_1: true
+  annotations_1: {}
+  name_1: ""
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+
+
+securityContext: {}
+
+
+service_1:
+  type_1: ClusterIP
+  port_1: 80
+
+config: []
+
+ingress:
+  enabled_1: true
+  ssl passthrough_1: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough
+  className_1: ""
+  annotations: {}
+  hosts:
+    - host_1: chart-example.local
+      paths:
+        - path_1: /
+          pathType_1: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path_1: /
+    port_1: http
+readinessProbe:
+  httpGet:
+    path_1: /
+    port_1: http
+
+autoscaling:
+  enabled_1: false
+  minReplicas_1: 2
+  maxReplicas_1: 200 
+  targetCPUUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
