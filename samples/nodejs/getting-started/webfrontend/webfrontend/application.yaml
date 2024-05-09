@@ -19,7 +19,8 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd1 #default
+    namespace: argocd1 
+    #default
   syncPolicy:
     syncOptions:
     - Createnamespace=false
