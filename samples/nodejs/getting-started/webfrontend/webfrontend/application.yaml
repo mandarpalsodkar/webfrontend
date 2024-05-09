@@ -1,31 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wefrontend-argo
+  name: myapp-argo-application
   namespace: argocd1
 spec:
   project: default
 
   source:
     repoURL: https://github.com/mandarpalsodkar/webfrontend.git
-    targetRevision: master
+    targetRevision: HEAD
     path: samples/nodejs/getting-started/webfrontend/webfrontend/
-      # path to the yaml manifests
-    helm:
-      passCredentials: true
-      valueFiles:
-        - commonconfig.yaml
-        - values.yaml
-
-  destination:
+  destination: 
     server: https://kubernetes.default.svc
-    namespace: argocd1 
-    #default
+    
+
   syncPolicy:
     syncOptions:
-    - Createnamespace=false
+    - CreateNamespace=true
 
     automated:
       selfHeal: true
       prune: true
-
