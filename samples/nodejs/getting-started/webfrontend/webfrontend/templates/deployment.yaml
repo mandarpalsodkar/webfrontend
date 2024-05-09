@@ -35,7 +35,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           #image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          image: "{{ if .Values.image.repository }}{{ .Values.image.repository }}{{ else }}{{ .Values.common.repository_1 }}{{ end }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ if .Values.image.repository }}{{ .Values.image.repository }}{{ else }}{{ .Values.image.repository_1 }}{{ end }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

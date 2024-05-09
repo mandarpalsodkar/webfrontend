@@ -1,67 +1,102 @@
 replicaCount: 1
 
-common:
-  repository_1: "mpkubeacrt.azurecr.io/webfrontend"
-  pullPolicy_1: Never
-  tag: ""
+image:
+  repository_1: "aksres1.azurecr.io/webfrontend"
+  pullPolicy_1: IfNotPresent
+  tag_1: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  create_1: true
-  automount_1: true
-  annotations_1: {}
-  name_1: ""
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
 podAnnotations: {}
 podLabels: {}
-podSecurityContext: {}
 
+podSecurityContext: {}
+  # fsGroup: 2000
 
 securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
-
-service_1:
-  type_1: ClusterIP
-  port_1: 80
-
-config: []
+service:
+  type: LoadBalancer
+  port: 80
 
 ingress:
-  enabled_1: true
-  ssl passthrough_1: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough
-  className_1: ""
+  enabled: false
+  className: ""
   annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host_1: chart-example.local
+    - host: chart-example.local
       paths:
-        - path_1: /
-          pathType_1: ImplementationSpecific
+        - path: /
+          pathType: ImplementationSpecific
   tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 
 livenessProbe:
   httpGet:
-    path_1: /
-    port_1: http
+    path: /
+    port: http
 readinessProbe:
   httpGet:
-    path_1: /
-    port_1: http
+    path: /
+    port: http
 
 autoscaling:
-  enabled_1: false
-  minReplicas_1: 2
-  maxReplicas_1: 200 
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
 volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
 nodeSelector: {}
+
 tolerations: []
+
 affinity: {}
