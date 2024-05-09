@@ -14,8 +14,8 @@ spec:
     helm:
       passCredentials: true
       valueFiles:
-        - values.yaml
         - commonconfig.yaml
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc

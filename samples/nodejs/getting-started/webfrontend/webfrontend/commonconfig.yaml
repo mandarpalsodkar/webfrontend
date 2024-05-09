@@ -1,9 +1,15 @@
+# file: development/common-values.yaml.
+# Default values for webfrontend.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
 replicaCount: 1
 
-image_1:
-  repository_1: aksres1.azurecr.io/webfrontend
-  pullPolicy_1: IfNotPresent
-  tag_1: ""
+image_1:  
+    repository_1: test
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -22,7 +28,6 @@ serviceAccount:
 
 podAnnotations: {}
 podLabels: {}
-
 podSecurityContext: {}
   # fsGroup: 2000
 
@@ -38,8 +43,11 @@ service:
   type: LoadBalancer
   port: 80
 
+config: []
+
 ingress:
-  enabled: false
+  enabled: true
+  ssl passthrough: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
@@ -78,25 +86,31 @@ readinessProbe:
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 100 
+  #maxReplicas: .Values.common.autoscaling.maxReplicas
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
 volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+#common:
+ # autoscaling:
+  #- name: minReplicas
+   # value: "2"
+  #- name: maxReplicas
+   # value: "102"
+  #image:  
+  #- name: repository
+   # value: mplin2.azurecr.io/
