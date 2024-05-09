@@ -1,7 +1,7 @@
 replicaCount: 1
 
 common:
-  repository_1: mpkubeacrt.azurecr.io/webfrontend
+  repository_1: "mpkubeacrt.azurecr.io/webfrontend"
   pullPolicy_1: Never
   tag: ""
 
