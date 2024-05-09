@@ -34,9 +34,9 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          #image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- print " Override controller.installPlugins to use '"  }}
-          image: "{{- include "webfrontend.image_1.repository_1" . |nindent 4}}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          #image: "{{- include "webfrontend.image_1.repository_1" . |nindent 4}}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
