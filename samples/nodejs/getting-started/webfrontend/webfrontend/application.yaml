@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/mandarpalsodkar/dev-spaces.git
+    repoURL: https://github.com/mandarpalsodkar/webfrontend.git
     targetRevision: master
     path: samples/nodejs/getting-started/webfrontend/webfrontend/
       # path to the yaml manifests
