@@ -10,6 +10,12 @@ spec:
     repoURL: https://github.com/mandarpalsodkar/webfrontend.git
     targetRevision: HEAD
     path: samples/nodejs/getting-started/webfrontend/webfrontend/
+    helm:
+      passCredentials: true
+      valueFiles:
+        - values.yaml
+        - commonconfig.yaml
+  
   destination: 
     server: https://kubernetes.default.svc
     namespace: argocd
