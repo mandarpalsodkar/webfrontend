@@ -6,10 +6,10 @@
 replicaCount: 1
 
 image_1:  
-    repository_1: aksres1.azurecr.io/
-    pullPolicy: IfNotPresent
+    repository_1: aksres1.azurecr.io/webfrontend
+    pullPolicy_1: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag_1: "main-23.4.6.b10"
 
 imagePullSecrets: []
 nameOverride: ""
