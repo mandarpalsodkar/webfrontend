@@ -35,7 +35,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ if .Values.image.repository }}{{ .Values.image.repository }}{{ else }}{{ .Values.image_1.repository_1 }}{{ end }}:{{ if .Values.image.tag }}{{ .Values.image.tag }}{{ else }}{{ .Values.image_1.tag_1 }}{{ end }}{{- if not .Values.image.tag }}{{- if not .Values.image_1.tag_1 }}{{- default .Chart.AppVersion }}{{- end }}{{- end }}
-          imagePullPolicy: {{ if eq .Values.image.pullPolicy 'IfNotPresent' }}{{ else .Values.image_1.pullPolicy_1 }}{{ end }}:
+          imagePullPolicy: {{ if eq .Values.image.pullPolicy "IfNotPresent" }}{{ else .Values.image_1.pullPolicy_1 }}{{ end }}:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
