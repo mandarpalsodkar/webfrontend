@@ -5,7 +5,7 @@ replicaCount: 1
 image_1:  
     repository_1: aksres1.azurecr.io/webfrontend
     pullPolicy_1: Always
-    tag_1: "test_tag"
+    tag_1: ""
 
 imagePullSecrets: []
 nameOverride: ""
