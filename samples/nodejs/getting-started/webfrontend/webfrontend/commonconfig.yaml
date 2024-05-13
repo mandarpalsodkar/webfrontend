@@ -1,14 +1,10 @@
-# file: development/common-values.yaml.
-# Default values for webfrontend.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# file: development/commonconfig.yaml.
 
 replicaCount: 1
 
 image_1:  
     repository_1: aksres1.azurecr.io/webfrontend
     pullPolicy_1: Always
-    # Overrides the image tag whose default is the chart appVersion.
     tag_1: "main-23.4.6.b10"
 
 imagePullSecrets: []
@@ -24,14 +20,11 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 podSecurityContext: {}
-  # fsGroup: 2000
-
 securityContext: {}
 
-
-service:
-  type: LoadBalancer
-  port: 80
+service_1:
+  type_1: LoadBalancer
+  port_1: 80
 
 config: []
 
@@ -48,12 +41,8 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
-
 
 livenessProbe:
   httpGet:
@@ -67,27 +56,12 @@ readinessProbe:
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100 
-  #maxReplicas: .Values.common.autoscaling.maxReplicas
+  maxReplicas_1: 100 
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
 
-# Additional volumes on the output Deployment definition.
 volumes: []
 
-
-# Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
-#common:
- # autoscaling:
-  #- name: minReplicas
-   # value: "2"
-  #- name: maxReplicas
-   # value: "102"
-  #image:  
-  #- name: repository
-   # value: mplin2.azurecr.io/
